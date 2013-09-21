@@ -1,0 +1,22 @@
+{
+    "name": "SPA-Authentication",
+    "description": "Single Page Application Authentication Example with Node.js and AngularJS",
+    "version": "0.0.1",
+    "author": "Naor Ye, http://www.webdeveasy.com, naorye@gmail.com, Github: naorye",
+    "engines": {
+        "node": "0.6.18",
+        "npm": "1.1.9"
+    },
+    "scripts": {
+        "start": "./node_modules/.bin/nodemon app.js"
+    },
+    "dependencies": {
+        "express": "latest",
+        "ejs": "latest",
+        "mongoose": "latest",
+        "connect-mongo": "latest"
+    },
+    "devDependencies": {
+        "nodemon": "latest"
+    }
+}

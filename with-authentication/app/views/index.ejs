@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="SPAAuth">
+	<head>
+		<title>Single Page Application Authentication</title>
+		<meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+	</head>
+	<body>
+		<button ng-hide="session.isLoggedIn" ng-click="session.facebookLogin()">Login</button>
+		<span ng-show="session.isLoggedIn" ng-bind="'Hello ' + session.currentUser.name"></span>
+		<button ng-show="session.isLoggedIn" ng-click="session.logout()">Logout</button>
+		<br/><br/>
+		<div ng-controller="MessageController">
+			Unsecured message: <span ng-bind="messages.unsecured"></span>
+			<br/>
+			Secured message: <span ng-bind="messages.secured"></span>
+		</div>
+
+		<script type="text/javascript" src="/app/libs/angular.js"></script>
+		<script type="text/javascript" src="/app/app.js"></script>
+		<script type="text/javascript" src="/app/services/session-service.js"></script>
+		<script type="text/javascript" src="/app/controllers/message-controller.js"></script>
+		<script type="text/javascript">
+            window.user = <%- JSON.stringify(user) %>;
+		</script>
+	</body>
+</html>
