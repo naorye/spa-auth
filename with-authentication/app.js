@@ -1,9 +1,12 @@
-var fs = require('fs')
+var fs = require('fs'),
     mongoose = require('mongoose'),
     passport = require('passport'),
-    http = require('http');
+    http = require('http'),
+    mongodbURI = '<my mongodb uri>', /* For example: mongodb://localhost/my-app-db */
+    facebookAppId = '<my facebook application id>',
+    facebookAppSecret = '<my facebook application secret>';
 
-mongoose.connect('mongodb://localhost/my-app-db');
+mongoose.connect(mongodbURI);
 
 var models_path = __dirname + '/app/models';
 fs.readdirSync(models_path).forEach(function(file) {
@@ -12,9 +15,9 @@ fs.readdirSync(models_path).forEach(function(file) {
     }
 });
 
-require('./config/passport')(passport);
+require('./config/passport')(passport, facebookAppId, facebookAppSecret);
 
-var app = require('./config/express')(passport);
+var app = require('./config/express')(passport, mongodbURI);
 
 require('./config/routes')(app, passport);
 

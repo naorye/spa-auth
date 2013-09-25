@@ -12,9 +12,10 @@ More information can be found here: <a href="http://www.webdeveasy.com/single-pa
 
 1. Clone this repo
 2. Go to desired directory ('without-authentication' or 'with-authentication')
-3. Install dependencies using 'npm install'
-4. Start your mongodb in default port (27017)
-5. Start the application using 'npm start'
+3. Fill in app.js your: mongodbURI, facebookAppId and facebookAppSecret
+4. Install dependencies using 'npm install'
+5. Start your mongodb in default port (27017)
+6. Start the application using 'npm start'
 
 * * *
 

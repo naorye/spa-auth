@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     FacebookStrategy = require('passport-facebook').Strategy;
 
 
-module.exports = function (passport) {
+module.exports = function (passport, facebookAppId, facebookAppSecret) {
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -16,8 +16,8 @@ module.exports = function (passport) {
     });
 
     passport.use(new FacebookStrategy({
-        clientID: '468182209922625',
-        clientSecret: '4a4be02e7994058c08b3d3be10b583b6',
+        clientID: facebookAppId,
+        clientSecret: facebookAppSecret,
         callbackURL: '/auth/facebook/callback'
     }, function(accessToken, refreshToken, profile, done) {
         User.findOne({ 'facebook.id': profile.id }, function (err, user) {

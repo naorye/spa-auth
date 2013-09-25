@@ -2,7 +2,7 @@ var express = require('express'),
     mongoStore = require('connect-mongo')(express),
     path = require('path');
 
-module.exports = function (passport) {
+module.exports = function (passport, mongodbURI) {
     var app = express();
 
     var root = path.normalize(__dirname + '/..');
@@ -23,7 +23,7 @@ module.exports = function (passport) {
     app.use(express.session({
         secret: 'my-session-store',
         store: new mongoStore({
-            url: 'mongodb://localhost/my-app-db',
+            url: mongodbURI,
             collection : 'sessions'
         })
     }));
