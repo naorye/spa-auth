@@ -5,12 +5,12 @@ module.exports = function (app, passport) {
             next();
         },
         function (req, res) {
-            res.json({ message: 'This message should be responsed only to authenticated users' });
+            res.json({ message: 'This message is only for authenticated users' });
         });
 
 
     app.get('/api/*', function (req, res) {
-        res.json({ message: 'This message should be responsed to all users' });
+        res.json({ message: 'This message is known by all' });
     });
 
 

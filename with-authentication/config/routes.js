@@ -18,16 +18,16 @@ module.exports = function (app, passport) {
     app.get('/api/secured/*',
         function (req, res, next) {
             if (!req.user) {
-                return res.json({ error: 'Login required.' });
+                return res.json({ error: 'This is a secret message, login to see it.' });
             }
             next();
         },
         function (req, res) {
-            res.json({ message: 'This message should be responsed only to authenticated users' });
+            res.json({ message: 'This message is only for authenticated users' });
         });
 
     app.get('/api/*', function (req, res) {
-        res.json({ message: 'This message should be responsed to all users' });
+        res.json({ message: 'This message is known by all' });
     });
     
     app.get('/*', function (req, res) {
